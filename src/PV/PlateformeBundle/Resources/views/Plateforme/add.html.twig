@@ -1,0 +1,13 @@
+{% extends "PVCoreBundle:Default:layout.html.twig" %}
+
+{% block titre %}
+    {{ parent() }} Ajouter une vidéo
+{% endblock %}
+
+
+{% block coreBody %}
+    <h2>Ajouter une vidéo : </h2>
+    <p>Veuillez compléter le formulaire suivant pour ajouter une vidéo.</p>
+
+    {{ form(form) }}
+{% endblock %}

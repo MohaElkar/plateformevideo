@@ -1,0 +1,17 @@
+{% extends "PVCoreBundle:Default:layout.html.twig" %}
+
+{% block coreBody %}
+    <div id="videoContainer">
+        <h2>{{ video.titre }}</h2>
+        <p>{{ video.description }}</p>
+
+        <p>Vidéo posté dans : {{ video.categorie.nom }}</p>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.lienVideo }}" frameborder="0" allowfullscreen></iframe>
+        
+        <div class="btnModifier">
+            <a href="{{ path("pv_plateforme_plateforme_edit", {"id":video.id}) }}" class="btn btn-danger">Modifier cette vidéo</a>
+        </div>
+        
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+#    pv_plateforme.example:
+#        class: PV\PlateformeBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

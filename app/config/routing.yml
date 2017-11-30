@@ -1,0 +1,13 @@
+pv_plateforme:
+    resource: "@PVPlateformeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+pv_core:
+    resource: "@PVCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

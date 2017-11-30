@@ -1,0 +1,6 @@
+{# Affiche le drop down des categories dans le header #}
+<ul class="dropdown-menu">
+    {% for categorie in categories %}
+        <li><a href="{{ path("pv_plateforme_view_cat", {"id":categorie.id}) }}">{{ categorie.nom }}</a></li>
+    {% endfor %}
+</ul>
