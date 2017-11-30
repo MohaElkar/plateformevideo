@@ -48,6 +48,12 @@ class Video
      */
     private $categorie;
 
+
+    /**
+     * @ORM\OneToOne(targetEntity="PV\PlateformeBundle\Entity\Image", cascade={"persist"})
+     */
+    private $image;
+
     /**
      * Get id
      *
@@ -153,5 +159,29 @@ class Video
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \PV\PlateformeBundle\Entity\Image $image
+     *
+     * @return Video
+     */
+    public function setImage(\PV\PlateformeBundle\Entity\Image $image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \PV\PlateformeBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

@@ -48,6 +48,13 @@ class Video
      */
     private $categorie;
 
+
+    /**
+     * @ORM\OneToOne(targetEntity="PV\PlateformeBundle\Entity\Image", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $image;
+
     /**
      * Get id
      *

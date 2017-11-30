@@ -27,7 +27,8 @@ class VideoType extends AbstractType
                     "choice_label" => "nom"
                 )
             )
-            ->add("Ajouter", SubmitType::class, array(
+            ->add("image",          ImageType::class, array("required"=>false))
+            ->add("Ajouter",        SubmitType::class, array(
                 'attr' => array('class' => 'btn btn-block btn-success'),
             ))
         ;
