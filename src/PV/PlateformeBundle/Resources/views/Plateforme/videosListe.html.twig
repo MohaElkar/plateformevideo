@@ -2,7 +2,11 @@
     {% for video in videos %}
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                <img src="{{ asset(video.image.FileName) }}" alt="...">
+                {% if video.image is not null %}
+                    <img src="{{ asset(video.image.FileName) }}" alt="...">
+                {% else %}
+                    <img src="http://lorempicsum.com/simpsons/200/200/1" alt="Image par defaut">
+                {% endif %}
                 <div class="caption">
                     <h3>{{ video.titre }}</h3>
                     <p>{{ video.description|length > 50 ? video.description|slice(0, 50) ~ '...' : video.description  }}</p>
