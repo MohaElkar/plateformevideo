@@ -105,45 +105,5 @@ class Categorie
     {
         return $this->description;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add video
-     *
-     * @param \PV\PlateformeBundle\Entity\Video $video
-     *
-     * @return Categorie
-     */
-    public function addVideo(\PV\PlateformeBundle\Entity\Video $video)
-    {
-        $this->videos[] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Remove video
-     *
-     * @param \PV\PlateformeBundle\Entity\Video $video
-     */
-    public function removeVideo(\PV\PlateformeBundle\Entity\Video $video)
-    {
-        $this->videos->removeElement($video);
-    }
-
-    /**
-     * Get videos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getVideos()
-    {
-        return $this->videos;
-    }
 }
+

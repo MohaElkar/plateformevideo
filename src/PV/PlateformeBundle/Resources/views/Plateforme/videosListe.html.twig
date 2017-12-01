@@ -1,0 +1,14 @@
+<div class="row">
+    {% for video in videos %}
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="{{ asset(video.image.FileName) }}" alt="...">
+                <div class="caption">
+                    <h3>{{ video.titre }}</h3>
+                    <p>{{ video.description|length > 50 ? video.description|slice(0, 50) ~ '...' : video.description  }}</p>
+                    <p> <a href="{{ path("pv_plateforme_view", {"id":video.id}) }}" class="btn btn-default" role="button">Voir</a></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

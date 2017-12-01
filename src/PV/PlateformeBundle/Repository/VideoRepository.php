@@ -15,6 +15,6 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
             ->where("v.categorie = :idCat")
             ->setParameter("idCat", $idCat);
 
-        $result = $qb->getQuery()->getResult();
+        return $result = $qb->getQuery()->getResult();
     }
 }

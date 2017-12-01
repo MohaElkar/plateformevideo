@@ -1,12 +1,9 @@
 {% extends "PVCoreBundle:Default:layout.html.twig" %}
 
 {% block coreBody %}
-    <div class="jumbotron">
-        <h4>Ma plateforme vidéo pour pratiquer.</h4>
-    </div>
-
     <div id="videos">
-
+        <h2>Catégorie : {{ categorie.nom }}</h2>
+        <p>Description de la catégorie : {{ categorie.description }}</p>
         {{ include("@PVPlateforme/Plateforme/videosListe.html.twig") }}
 
     </div>

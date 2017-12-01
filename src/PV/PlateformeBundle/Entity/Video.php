@@ -3,6 +3,7 @@
 namespace PV\PlateformeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Video
@@ -25,6 +26,9 @@ class Video
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255)
+     *
+     * Validation :
+     * @Assert\NotBlank(message="Le titre ne peut pas être vide.")
      */
     private $titre;
 
@@ -32,19 +36,28 @@ class Video
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     *
+     * Validation :
+     * @Assert\NotBlank(message="La description ne peut pas être vide.")
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lienVideo", type="string", length=255)
+     * @ORM\Column(name="lienVideo", type="string", length=255).
+     *
+     * Validation :
+     * @Assert\NotBlank(message="Le lien vidéo ne peut pas être vide.")
      */
     private $lienVideo;
 
     /**
-     * @ORM\OneToOne(targetEntity="PV\PlateformeBundle\Entity\Categorie")
+     * @ORM\ManyToOne(targetEntity="PV\PlateformeBundle\Entity\Categorie")
      * @ORM\JoinColumn(nullable=false)
+     *
+     * Validation : On demande à ce que l'obj catégorie soit validé suivant ses règles.
+     * @Assert\Valid()
      */
     private $categorie;
 

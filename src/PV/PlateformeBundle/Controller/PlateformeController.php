@@ -2,15 +2,43 @@
 
 namespace PV\PlateformeBundle\Controller;
 
+use PV\PlateformeBundle\Entity\Categorie;
 use PV\PlateformeBundle\Entity\Video;
 use PV\PlateformeBundle\Form\VideoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class PlateformeController extends Controller
 {
+    /**
+     * @Route("/test")
+     */
+    public function testAction(){
+        $video = new Video();
+
+        $video->setTitre("Titre");
+        $video->setDescription("Hello, description de la vidéo");
+        $video->setLienVideo("idVidéoYoutube");
+
+        $categorie = new Categorie();
+        $categorie->setNom("Humour");
+        $categorie->setDescription("Description cat Humour");
+
+        $video->setCategorie($categorie);
+
+        // on récupère le service "validator"
+        $validator = $this->get("validator");
+        $errors = $validator->validate($video);
+
+        // on renvoi une réponse suivant ce qu'il se passe
+        //  - Affichage des erreurs ou message success.
+        return new Response( (count($errors)>0) ? (string)$errors : "Video valide" );
+    }
+
+
     /**
      * @Route("/add/")
      */
@@ -80,12 +108,18 @@ class PlateformeController extends Controller
      */
     public function viewCategorieAction($id)
     {
-        $entityManager = $this->getDoctrine()->getManager()->getRepository("PVPlateformeBundle:Video");
-        $videos = $entityManager->getVideosByCategory($id);
+        $doctrine = $this->getDoctrine();
 
-        dump($videos);
+        // fetch
+        $categorie  =  $doctrine->getRepository("PVPlateformeBundle:Categorie")->findById($id);
+        $videos = $doctrine->getRepository("PVPlateformeBundle:Video")->getVideosByCategory($categorie);
 
-        return $this->render('PVPlateformeBundle:Plateforme:edit.html.twig');
+        dump($categorie);
+
+        return $this->render('PVPlateformeBundle:Plateforme:categorie.html.twig',array(
+            "categorie" => $categorie[0],
+            "videos" => $videos
+        ));
     }
 
     /**

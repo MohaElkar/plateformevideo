@@ -1,8 +1,19 @@
 {% extends "PVCoreBundle:Default:layout.html.twig" %}
 
 {% block coreBody %}
-    <h2>Modifier vidéo : {{ video.titre }}</h2>
 
-    {{ form(form) }}
+    <div class="row">
+        <div class="col-lg-7">
+            <h2>Modifier vidéo : {{ video.titre }}</h2>
+            {{ form(form) }}
+        </div>
+
+        <div class="col-lg-5">
+            <div class="imageActuelle">
+                <h2>Image actuelle :</h2>
+                <img src="{{ asset(video.image.FileName) }}" alt="{{ video.image.alt }}" class="img-responsive">
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
